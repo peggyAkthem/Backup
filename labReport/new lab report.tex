@@ -1,0 +1,991 @@
+\documentclass[openany,11pt,a4paper]{book}
+
+%% packages
+
+\usepackage{amsmath} % needed for command eqref
+\usepackage{amssymb} % needed for math fonts
+\usepackage{bm}
+\usepackage[colorlinks=true,breaklinks]{hyperref} % needed for creating hyperlinks in the document, the option colorlinks=true gets rid of the awful boxes, breaklinks breaks lonkg links (list of figures), and ngerman sets everything for german as default hyperlinks language
+\usepackage[hyphenbreaks]{breakurl} %
+\usepackage{xcolor}
+\definecolor{c1}{rgb}{0,0,1} % blue
+\definecolor{c2}{rgb}{0,0.3,0.9} % light blue
+\definecolor{c3}{rgb}{0.3,0,0.9} % red blue
+\hypersetup{
+linkcolor={c1}, % internal links
+citecolor={c2}, % citations
+urlcolor={c3} % external links/urls
+}
+%\usepackage{cite} % needed for cite
+%\usepackage[round,authoryear]{natbib} % needed for cite and abbrvnat bibliography style
+\usepackage[nottoc]{tocbibind} % needed for displaying bibliography and other in the table of contents
+\usepackage{graphicx} % needed for \includegraphics 
+\usepackage{longtable} % needed for long tables over pages
+\usepackage{bigstrut} % needed for the command \bigstrut
+\usepackage{enumerate} % needed for some options in enumerate
+\usepackage{todonotes} % needed for todos
+\usepackage{makeidx} % needed for creating an index
+\usepackage{color}
+
+
+\makeindex
+
+%% page settings
+
+\usepackage[top=2cm, bottom=1.8cm,left=2.5cm,right=2.5cm]{geometry} % needed for page border settings
+\parindent=0cm % for space of first line of new text block
+\sloppy % for writing with hyphenless justification (tries to)
+\hyphenation{} % use hyphenation of tolerance parameters, http://www.jr-x.de/publikationen/latex/tipps/zeilenumbruch.html
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\usepackage{fancyhdr} % needed for head and foot opt
+
+
+%% my macros
+
+%% Text fomats
+\newcommand{\tbi}[1]{\textbf{\textit{#1}}}
+
+%% Math
+\newcommand{\bra}[1]{\langle #1 | \,}
+\newcommand{\ket}[1]{\, | #1 \rangle}
+\newcommand{\braket}[2]{\langle #1 | #2 \rangle}
+\newcommand{\expv}[1]{\langle #1 \rangle}
+
+%% Math fonts
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+\newcommand{\imp}[1]{\underline{\textit{#1}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\pagestyle{empty}
+
+
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
+\center 
+
+\textsc{\LARGE University of Bonn}\\[1.5cm]
+\textsc{\Large  Lab Report}\\[0.5cm] 
+
+\vfill
+
+
+\HRule \\[0.4cm]
+{\huge \textbf {High Resolution Laser Spectroscopy}}
+
+ 
+\vfill
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Group 9}\\
+Monali \textsc{Borthakur}\\
+Panagiota \textsc{Kardala} 
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Tutor:} \\
+Eduardo \textsc{.....} 
+\end{flushright}
+\end{minipage}\\[4cm]
+
+
+\vfill
+
+
+{\large \today}\\[3cm] 
+
+ 
+
+\vfill
+
+\end{titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%
+
+\pagestyle{plain}
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+\chapter{Introduction - purpose of experiment}
+
+Laser spectroscopic techniques are mainly used for ultra-high resolution studies of the
+properties of atoms and molecules.\\
+ 
+We used a diode laser emitting radiation at 794nm to study the characteristics of laser diodes and Fabry-Perot etalons and to perform optical spectroscopy experiments on rubidium vapor.\\
+
+First we applied a linear spectroscopic technique to study Doppler-broadened transitions. \\
+Second we used non-linear spectroscopy in order to increase the spectral resolution by eliminating the Doppler effect.\\
+
+
+ 
+
+
+
+
+\chapter{Diode Lasers}
+
+A diode laser is an electrically pumped semiconductor laser, where is used widely as a source of narrow-band and frequency-tunable radiation.\\ 
+
+
+\underline {\emph{Principal Characteristics Of Diode Lasers}}\\
+$ \bullet $ low current, voltage and power required.\\
+$ \bullet $ low intensity.\\
+$ \bullet $ divergent laser beam.\\
+$ \bullet $ emission of X-rays or visible light.\\
+
+ 
+
+\section{Basic Principle Of Operation} 
+The photons are produced through a stimulated emission of an active medium correspondent to a biased $p-n$ junction of a semiconductor diode. When the diode is biased in the forward direction, electrons from the $n-side$ of the junction and holes from the $ p-side$ meet and recombine in the vicinity of the junction, so we have recombination between holes and electrons, leading to a spontaneous emission of photons with energy equal to the direct energy band gap between holes and electrons of the semiconductor material (crystal). The semiconductor crystal is cleaved along two lattice planes perpendicular to the junction plane.\\
+The active region of the diode is in the intrinsic region, where the charge carriers, electrons and holes, are pumped into it from the $n-$ and $p-$ doped regions respectively. These charge carriers correspond to the injection current. The crystal faces form the two end mirrors of a Fabry-Perot laser cavity.\\
+If the Fresnel reflection from the crystal faces is enough to overcome the optical losses, it leads to laser oscillation, where coherent output beam is emitted, when the current $I$ injected into the $p-n$ diode is higher than the threshold current $I_{thr}$. For $I < I_{thr} $ the laser diode behaves similarly to a light-emitting diode (LED).\\
+
+The light is then amplified through a resonator. Solitary laser diodes have linewidths of $ \Delta\nu \sim 20 MHz $ and can be reduced greatly by optical feedback from a frequency-selective optical element.\\
+
+this is the standard arrangement for high-precision laser spectroscopy\\\\\\
+
+%\begin{figure}
+%  \includegraphics[scale=.8,bb=30mm 25mm 0mm 0mm]{equipment.PNG}
+%\end{figure}
+
+\fboxsep=5mm%padding thickness
+\fboxrule= 4pt%border thickness
+
+\begin{figure}[hbtp]
+\centering
+%\fcolorbox{bordercolor}{paddingcolor}{image}
+\fcolorbox{black}{white}{\includegraphics[width=0.8\linewidth]{equipment.PNG}}
+\caption{Equipment}
+\label{fig:equipment}
+\end{figure}
+
+
+
+
+
+Laser beam is incident on a diffraction grating at such an angle that the minus first diffraction order is sent back into the laser (Littrow configuration) and most of the output power is available in the zeroth diffraction order.\\\\ 
+
+Narrowing of the emission linewidth to $1 MHz$ is achieved by the frequency selectivity of the grating, the improvement of the quality of the resonator (bigger optical length) and because the output light is fed back into the gain material with a phase delay\\\\\\
+
+
+
+
+
+
+
+
+\section{Wavelength Control}
+There is a broad gain profile for Laser emission, on a number of modes of the Fabry-Perot resonator, formed by the laser diode facets, around the center wavelength.
+Tuning the resonance frequency of one of these modes to make the laser oscillate on this one mode, is possible by fixing:\\
+
+
+$\bullet$  Laser temperature\\
+$\cdot$ overall shift of the gain profile of the diode laser material.\\
+$\cdot$ change of the diode length (thermal expansion) $\rightarrow$ pattern of Fabry-Perot modes moves across the gain profile\\\\
+
+
+$\bullet$  Injection Current\\ 
+small changes in the refractive index of the gain medium allows to scan or modulate the laser at rates of up to a few MHz.\\ \\
+
+$\bullet $  Grating angle\\
+changing the external diffraction grating angle via the PZT.\\ 
+
+
+
+We have to underline here though, that for both temperature and current tuning the gain profile of the laser
+medium and the positions of the Fabry-Perot modes do not necessarily shift at the same rate, resulting to the cause of mode hops. i.e. the laser output frequency jumps to a different Fabry-Perot mode.\\
+There are also instability regions where no single-mode operation is possible and the laser repeatedly jumps between different modes or even operates on several modes simultaneously. 
+
+
+
+
+
+\section{Quantum Efficiency}
+ 
+The quantum efficiency of a laser is number of photons emitted $N_{\gamma}$ per injected
+electron $ N_{e}$.\\
+For Laser 
+
+\begin{equation}
+ P=hv \dfrac{N_{\gamma}}{t}
+\end{equation}
+
+ and 
+\begin{equation}
+ I_{inj} = e \dfrac{N_{e}}{t}
+\end{equation}
+
+
+where P is the laser beam power and $I_{inj}$ the injection current. 
+
+Above threshold, the relation between injection current and power is linear
+
+\begin{equation}
+\dfrac{P}{I} = \dfrac{\partial P}{\partial I}
+\end{equation}
+
+thus have 
+
+
+\begin{equation}
+\dfrac{P}{I} =  \dfrac{h \nu} {e}
+\end{equation}
+
+
+where finally quantum efficiency is given by
+
+
+\begin{equation}
+\eta = \dfrac{N_{\gamma}}{N_{e}} = \dfrac{e}{h \nu} \dfrac{\partial P}{\partial I}
+\end{equation}
+
+
+
+
+
+\section*{Purpose of experiment}
+
+$\bullet $ Determine threshold current, slope efficiency $\partial P  /  \partial I$ above
+threshold and quantum efficiency. \\\\
+
+
+
+
+\section*{ Experimental procedure}
+
+
+\underline{measurement of laser output power vs. injection current}\\
+
+
+%\begin{figure}[hbtp]
+%\centering
+%\includegraphics[scale=1, bb=0mm 0mm 0mm 0mm]{setup1.PNG}
+%\end{figure}
+
+
+The output power is measured by focusing the output beam with a lens onto the calibrated photodiode.\\
+
+With the help of a small infrared detection card we made sure that the whole laser beam went into the power meter and then we tried to find at which position exactly the measured power was maximal and screw the power meter there.\\
+
+By varying the values of the injection current from $30 mA$ to $77$, we measured the power of the laser beam. The photodiode saturated at $51 mA$, so after this current value, we added an attenuator in front of the laser cavity in order to carry on with our measurements.\\ 
+
+To correct our attenuated power measurements, we calculated the unattenuated power values considering the equation 
+\begin{equation}
+I_{photodiode} = attenuator \cdot I_{real}
+\end{equation}
+
+so the values we used after $51 mA$ are calibrated as $I =  \dfrac{I_{photodiode}}{attenuator}  $.
+
+
+
+
+
+\section*{Analysis}
+
+When we were tilting the injection current, in the vicinity of $40-60 mA$, we could not obtain a stable value of power. Our power-meter was fluctuating in the range of $3-10 mA$, for each value that we tried to measure in this vicinity.
+In order to take a measurement, we were watching carefully for the value that was repeated the most in the fluctuation, and if this didn't work, we noted the average value of the fluctuation range.\\
+This is clearly reflected also in our plot.
+
+The respective measurement errors are $\Delta P=1 \mu W$ and $\Delta I=1mA$.\\
+
+
+\begin{center}
+    \begin{tabular}{| c | c |}
+    \hline
+    Power $(\mu W \pm 1)$ & Current $(mA \pm 1)$ \\ \hline
+    30 & 0 \\ \hline
+    31 & 1 \\ \hline
+    32 & 3 \\ \hline
+    32 & 5  \\ \hline
+    34 & 8  \\ \hline
+    35 & 17  \\ \hline
+    36 & 59  \\ \hline
+    37 & 154  \\ \hline
+    39 & 244  \\ \hline
+    41 & 476  \\ \hline
+    43 & 648  \\ \hline
+    45 & 897  \\ \hline
+    46 & 940  \\ \hline
+    47 & 1090  \\ \hline
+    48 & 1330 \\ \hline
+    50 & 1541  \\ \hline
+    51 & 1704  \\ \hline
+    52 & 1778  \\ \hline
+    53 & 1926  \\ \hline
+    55 & 2074  \\ \hline
+     57 & 2148  \\ \hline
+     59  & 2444  \\ \hline
+     61 & 2667  \\ \hline
+     63 &  2963  \\ \hline
+     65 & 3259  \\ \hline
+     67 & 3333  \\ \hline
+     69 & 3556  \\ \hline
+     70 & 3852  \\ \hline
+     73 & 4074  \\ \hline
+     75 & 4444  \\ \hline
+     77 & 4667  \\ \hline
+                
+    \end{tabular}
+\end{center}
+
+%\begin{figure}[hbtp]
+%\centering
+%\includegraphics[scale=1, bb=0mm 0mm 0mm 0mm]{slope efficiency.PNG}
+%\end{figure}
+
+$\bullet$The equation $f(x)= 103.8 x - 3579.9$ gives the slope efficiency  $\partial P  /  \partial I = 0.1038 V $.\\\\
+$\bullet$We calculate the threshold current for $x=0$ at $I_{thr}=   \dfrac{3579.9}{103.8} \longrightarrow $ 
+\textbf{$I_{thr}=34mA$}.\\\\
+$\bullet$The 
+quantum efficiency is calculated by
+ $\eta = \dfrac{N_{\gamma}}{N_{e}} = \dfrac{e}{h \nu} \dfrac{\partial P}{\partial I}=
+\dfrac{ 0.1038 e V}{h\nu}= \dfrac{\lambda \times 0.1038 e V}{hc}= \dfrac{0.1038 e V}{1.5615 eV} $ $\rightarrow$
+ $\eta =0.06647$ 
+
+
+\subsection{error propagation calculation}
+
+We want to calculate a quantity $\lambda = f(\chi ,\psi)$ whit respective errors of $\chi$ , $\delta\chi$ and $\psi$ , $\delta\psi$. Then $\delta\lambda = \sqrt{(\dfrac{\partial \lambda}{\partial \chi} \delta\chi)^{2}+(\dfrac{\partial \lambda}{\partial \psi} \delta\psi)^{2}}$.\\
+If $\lambda$ is a quotient or a product of $\chi,\psi$ then 
+\begin{equation}
+\dfrac{ \delta\lambda} {\lambda} = \sqrt{ (\dfrac{\delta \chi}{\chi})^{2}  + (\dfrac{\delta \psi}{\psi})^{2}   }
+\end{equation}
+
+
+
+
+\chapter{Fabry-Perot Interferometer}
+
+The characteristic feature of the FPI is a periodic resonant transmission of the laser beam.\\ 
+
+Specifically, the spectral response of a Fabry-Perot resonator is based on interference between the light launched into it and the light circulating in the resonator.
+ Constructive interference occurs if the two beams are in phase, leading to resonant enhancement of light inside the resonator. If the two beams are out of phase, only a small portion of the launched light is stored inside the resonator. The transmitted and reflected light is spectrally modified compared to the incident light.\\
+
+We assume a two-mirror Fabry-Pérot resonator of geometrical length $L$ filled with air ($n=1$). The round-trip time $\tau $ of light traveling in the resonator with speed  $c$ and the free spectral range  $\Delta \nu_{FSR}$ are given by
+\begin{equation}
+\tau =\dfrac{1}{\Delta \nu_{FSR}}=\dfrac{2L }{c}
+\end{equation}
+
+
+The free spectral range FSR gives the separation of equal spaces in frequency, among the transmission peaks
+
+\begin{equation}
+\Delta\nu _{FSR}= c/2nL
+\end{equation}
+
+where $n$ is the index of refraction of the medium between the mirrors.\\
+
+In the case of highly reflecting mirrors (i.e. F=........ ≫ 1) the FWHM of the transmission
+peaks is given by
+
+
+\begin{equation}
+\delta \nu _{FWHM}=  \dfrac{\Delta\nu _{FSR}}{f}    
+\end{equation}
+
+where
+\begin{equation}
+ f = \dfrac{\pi \sqrt{R}}{1-R}
+ \end{equation}
+ is the finesse of the interferometer.\\
+
+
+
+
+Resonances occur at frequencies at which light exhibits constructive interference after one round trip.
+Each resonator mode is associated with a resonance frequency  $\nu$ , where in the case of a resonator with two identical mirrors is given by
+\begin{equation}
+\nu _{lmn}= \dfrac{c}{2L} +(l+m+1)(\dfrac{c}{\pi L} arctan(\dfrac{\lambda L} {2\pi \omega_{0}})
+\end{equation}
+
+
+where $n$ is the longitudinal mode quantum number and $l,m$ are the transversal mode quantum numbers.\\
+
+
+The resonator modes that we are dealing with are the longitudinal, but the laser also can
+excite transverse modes that have different resonance frequencies.\\
+
+%In our experimental setup we have a confocal mirror arrangement, where the radius of curvature of the mirrors $R$ is equal to the cavity length $L$, thus all the even-symmetry transverse modes $(TEM00,TEM11,TEM02,TEM20,.. )$ are degenerate at the longitudinal mode frequencies, and all odd-symmetry modes $(TEM01,TEM10,TEM12,TEM21,. . . )$ are degenerate at the frequencies midway between them. Because of this, the total spectrum of the cavity exhibits a mode spacing of $\Delta \nu _{mode} = \Delta \nu _{FSR} 2 =n  cn4nL$.\\
+
+
+\subsection{Special case of confocal resonator $R=L$}
+
+In this case the frequency of the resonator is given by 
+
+\begin{equation}
+\nu _{l m n}=  ( n  + \dfrac{1}{2} (l+m+1))\dfrac{c}{2L}
+\end{equation}
+
+
+where we see that many modes are degenerate here.\\
+
+The space between the modes is given by 
+\begin{equation}
+\Delta \nu =\dfrac{c}{4L}= \dfrac{ \Delta\nu _{FSR}}{2}
+\end{equation}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Finesse of the Fabry-Perot etalon}
+The finesse of an optical resonator (cavity) is defined as its free spectral range divided by the (full width at half-maximum) bandwidth of its resonances. It is fully determined by the resonator losses and is independent of the resonator length.\\
+
+\section*{Purpose of experiment}
+
+$ \bullet$ Calibration of the frequency scale in the spectroscopy experiments by monitoring the transmission of a part of the laser beam through a Fabry-Perot interferometer.\\
+
+
+$\bullet$ Verify eq.......) and (4.3............) which relate the fringe width to the FSR of the FPI.\\
+$\bullet$ Calculate expected finesse for finite mirror reflectivity $R=0.85$.\\
+
+$\bullet$ Couple the laser into the FPI and display the FPI mode structure on the oscilloscope.\\
+$\bullet$ Measure the finesse using the value for the FSR (Eq. ........).\\
+$\bullet$ Evaluate the fringe spacing to get a calibration curve, in order to use it for the subsequent spectroscopic measurements to gauge the time axis in a relative frequency scale.\\
+
+
+
+
+
+\section*{Experimental procedure}
+A confocal Fabry-Perot interferometer consists of a resonator formed by two spherical mirrors separated by a distance L in air.\\
+
+
+
+$\bullet $ radius of curvature of $500 mm$.\\
+$\bullet $ reflectivity of $ R = 0.85$ at $794 nm$.\\
+$\bullet $ $L=500mm$.\\\\
+The mirror separation is defined by a quartz tube and stainless steel mounting rings in such a way that the thermal expansion of both materials compensate each other. \\
+The brass tube surrounding the interferometer is used as a thermal mass to ensure that the quartz and the steel are at the same temperature.\\
+
+The theoretical value of the finesse is calculated to be $19.2995$.\\
+
+The callibration of the mode spacing of the FPI that we will use is  $ \Delta \nu_{mode} = 149.9348 MHz$.\\
+
+
+
+\section{ Calibration}
+
+We use the setup as shown in the figure for obtaining the reference for the atomic spectra in the oscilloscope.\\
+
+\section*{Procedure and Analysis}
+
+First we plotted the power values against the arbitrary units of the oscilloscope and truncated our spectrum to exclude the ´´mirrored´´ areas in the beginning and end. \\
+
+We conducted the measurement in a time interval of $2.5 ms$, where we got 12514 'counts'.\\
+Thus every ´count´ corresponds to $2.5 ms/12514=1.997 \times 10^{-7} sec$.
+
+We multiplied every value of the counts sequence by the value of $1.997 \times 10^{-7} sec$, to obtain our calibrated in time spectrum.\\
+
+According to the script $ \Delta \nu_{ mode}=149.9348 MHz$, so we measured the distance between two peeks in the latter spectrum, were we found that the time interval of $\Delta \tau = 13.4 \mu sec $ corresponds to the value in the frequency domain of $\Delta \nu _{mode}= 149.9348 MHz$\\
+
+Thus every 'count' corresponds to $0.609$ MHz. To obtain the calibrated spectrum in frequency, we multiply each count with the above quantity.\\
+
+To use this callibration to the next parts, we retained this time interval in the measurements with the oscilloscope.
+
+
+\section{Measurement of finesse}
+
+Now we measure the distance between two neighboring pics, in the calibrated in frequency spectrum with $\Delta \nu_{ mode}= 105.07 MHz$, so now we have $\Delta \nu_{FSR}=2 \cdot 105.07 =210.15 MHz$.\\
+Measuring the $\delta \nu_{ FWHM} = 42.99 MHz$, we have according to eq. (3.3) $f=4.89$
+
+
+\chapter{Linear absorption spectroscopy of the D1 transition of Rb}
+
+   
+\section{ Hyperfine structure interactions}
+
+The Hyperfine interaction results from the interaction of the nuclear magnetic moment of the core $\mu_{I}$ with the magnetic moment of the valence electron $\mu_{e}$, which results in a coupling of the two angular momenta $F=I+J$.\\
+The Hamiltonian for the $s$ electron is $H_{HFS}= \dfrac{A}{\hbar} \vec{I} \vec{J}$, while $A$  is called the hyperfine coupling constant, given by 
+
+\begin{equation}
+A= \dfrac{4}{3} (\dfrac{Z}{n})^{3} g_{I} \dfrac{m_{e}}{m_{p}}\alpha^{4} m_{e} c^{2} \dfrac{\vec{I} \vec{J}}{\hbar^{2}}
+\end{equation}
+
+
+For electrons with $l \geq 1$ the coupling constant is different, given by 
+
+\begin{equation}
+A= \dfrac{1}{2l(l+1)(l+ \frac{1}{2})} (\dfrac{Z}{n})^{3} g_{I} \dfrac{m_{e}}{m_{p}}\alpha^{4} m_{e} c^{2} \dfrac{\vec{I} \vec{J}}{\hbar^{2}}
+\end{equation}
+
+In both cases the hamiltonian has the same structure, but the $s$ electrons quantitatively contribute in an order of magnitude larger. The $\vec{I} \vec{J}$ coupling leads to new coupled angular momenta states $\vert F, m_{F}\rangle$.\\
+
+The energy expectation values of the Hyperfine hamiltonian in that base is 
+\begin{equation}
+E_{HFS}= \dfrac{A}{2} [f(f+1) -I(I+1)-(J+1)]
+\end{equation}
+
+where $I_{85}=5/2$ and $I_{87}=3/2$.\\
+
+So for $^{85}Rb$ in $5S_{\frac{1}{2}}$ we have $J=\dfrac{1}{2}$, thus $F= I- J=2$ and $F=I+J=3$.\\
+
+For $^{87}Rb$ in $5S_{\frac{1}{2}}$ we have $F= I- J=1$ and $F=I+J=2$.\\
+
+Respectively for $^{85}Rb$ in $5P_{\frac{1}{2}}$ we have $J=\dfrac{1}{2}$, thus $F= I- J=2$ and $F=I+J=3$.\\
+
+Also for $^{87}Rb$ in $5P_{\frac{1}{2}}$ we have $F= I- J=1$ and $F=I+J=2$.\\\\
+
+We calculate then for $^{85}Rb$ :\\
+
+$\bullet$ $F=2 \rightarrow E=-\dfrac{7A}{4}$\\
+$\bullet$ $F=3 \rightarrow  E=\dfrac{5A}{4}$\\
+
+Respectively for  $^{87}Rb$                :\\
+
+$\bullet$ $F=1 \rightarrow  E=-\dfrac{5A}{4}$\\
+$\bullet$ $F=2 \rightarrow  E=\dfrac{3A}{4}$\\
+
+We see that $5S_{\frac{1}{2}}$ state and $5P_{\frac{1}{2}}$ state split in two sublevels each because of the Hyperfine interaction.\\
+
+The $(-)$ sign is indicating that the Hyperfine structure level is found below the respective Fine structure level by an energy difference E, and (+) above it.
+
+
+The Hyperfine interaction constant for H $1S\frac{1}{2}$ is given by $A_{H}= h \times 1420405751.768 \pm 0.001 Hz$, thus we can calculate A for $5S$ states in Rb by
+
+\begin{equation}
+A_{S} = (\dfrac{Z}{n})^{3} A_{H} \dfrac{g_{I}}{g_{H}} = (37/5)^{3} A_{H}\dfrac{g_{I}}{2.792}  = h \cdot g_{I} 2.061 \cdot 10^{11} =  
+\end{equation}
+
+and respectively for the 5P states 
+
+\begin{equation}
+A_{P} = \dfrac{(37/5)^{3}}{9} A_{H} \dfrac{g_{I}}{2.792} =  A_{S}/9
+\end{equation}
+
+
+
+Now we have to calculate the energy difference between the transitions that we want to observe.
+According to our hamiltonian, we have to keep in mind the electric transition dipole rules for the hypefine states, which are 
+
+
+
+$\Delta S = \Delta I = \Delta_{mS} = \Delta_{mI}= 0$ , $\Delta F = 0,\pm 1$  with $F = 0 \rightarrow F'=0$ forbidden and $\Delta _{mf}= 0, \pm 1$.\\
+
+ 
+
+For each isotope the possible transitions are :
+
+$5S_{1/2},F=2 \rightarrow 5P_{1/2}, F=2$ \\
+
+
+$5S_{1/2}, F=2 \rightarrow 5P_{1/2}, F=1$\\
+
+
+$5S_{1/2}, F=1 \rightarrow 5J_{1/2}, F=1$\\
+
+
+$5S_{1/2}, F=1 \rightarrow 5J_{1/2}, F=2$\\
+
+(we have to keep in mind that it's about electric dipole transitions, so the parity ($\Delta l = \pm 1$) has to change).\\
+
+
+\textbf{Transition energy}\\
+
+We will observe only the $D1$ lines in this experiment, so we will calculate the energy only for the transitions occurring from the ground $5S\frac{1}{2}$ to the lowest lying state $5P\frac{1}{2}$.\\\\
+
+
+
+$\bullet$ For  $^{87}Rb$ with $g_{I}=0.995 \cdot 10^{-3}$:\\
+         
+
+
+$\dfrac{3A_{P}}{4}=306.246 MHz$\\
+
+
+$\dfrac{5A_{P}}{4}=510.410 MHz$\\
+
+$5P 1\rightarrow 2 = 816.656 MHz$
+
+
+$\dfrac{3A_{S}}{4}= 2.5630 GHz$
+
+$\dfrac{5A_{S}}{4}= 4.2716 GHz$
+
+
+$5P 1\rightarrow 2 = 816.656 MHz$
+
+
+
+
+
+
+
+
+
+
+\begin{equation*}
+\Delta E_{5S_{1/2},F=1 \rightarrow 5P_{1/2}, F=1} = \delta\varepsilon  + \dfrac{5 A_{s}}{4} -\dfrac{5 A_{p}}{4}= \delta\varepsilon +  \dfrac{40 A_{s}}{36} 
+\end{equation*}
+
+
+%\begin{equation}
+%\Delta E_{5S_{1/2}, F=1 \rightarrow 5P_{1/2}, F=2} = \delta\varepsilon + \dfrac{5 A_{s}}{4} - \dfrac{3 A_{p}}{4}= \delta%\varepsilon + \dfrac{42 A_{s}}{36}
+%\end{equation}
+
+\begin{equation*}
+\Delta E_{ 5S_{1/2}, F=2 \rightarrow 5J_{1/2}, F=1} = \delta\varepsilon -\dfrac{3 A_{s}}{4} - \dfrac{5 A_{p}}{4}= \delta\varepsilon -\dfrac{32 A_{s}}{36}
+\end{equation*}
+
+%\begin{equation}
+%\Delta E_{5S_{1/2}, F=2 \rightarrow 5J_{1/2}, F=2} = \delta\varepsilon -\dfrac{3 A_{s}}{4} + \dfrac{3 A_{p}}{4}= \delta%\varepsilon -\dfrac{24 A_{s}}{36}
+%\end{equation}
+
+
+
+
+$\bullet$ For  $^{85}Rb$ with $g_{I}=0.2792 \cdot 10^{-3}$:\\
+
+\begin{equation*}
+\Delta E_{5S_{1/2},F=2 \rightarrow 5P_{1/2}, F=2} = \delta\varepsilon  + \dfrac{7 A_{s}}{4} -\dfrac{7 A_{p}}{4}= \delta\varepsilon  + \dfrac{63 A_{s}}{4 \cdot 9} -\dfrac{7 A_{s}}{36} =  \delta\varepsilon +\dfrac{56 A_{s}}{36} 
+\end{equation*}
+
+
+%\begin{equation}
+%\Delta E_{5S_{1/2}, F=2 \rightarrow 5P_{1/2}, F=3} = \delta\varepsilon - \dfrac{7 A_{s}}{4} + \dfrac{5 A_{p}}{4}=\delta%\varepsilon - \dfrac{58 A_{s}}{36}
+%\end{equation}
+
+%\begin{equation}
+%\Delta E_{ 5S_{1/2}, F=3 \rightarrow 5P_{1/2}, F=3} = \delta\varepsilon -\dfrac{5 A_{s}}{4} - \dfrac{5 A_{p}}{4}=\delta\varepsilon -\dfrac{40 A_{s}}{36}
+%\end{equation}
+
+\begin{equation*}
+\Delta E_{5S_{1/2}, F=3 \rightarrow 5P_{1/2}, F=2} = \delta\varepsilon -\dfrac{5 A_{s}}{4} - \dfrac{7 A_{p}}{4}=\delta\varepsilon -\dfrac{52 A_{s}}{36}
+\end{equation*}
+
+with $\delta E$ the energy difference between the fine structure states $5S\frac{1}{2}$ and $5P\frac{1}{2}$.\\
+
+We analytically calculate it in the imminent section $\delta\varepsilon = 5.9541 \cdot 10^{-3} eV$.\\
+
+
+ \underline{ For $^{87}Rb$ $\rightarrow$ $A_{S}= 8.4809 \cdot 10^{-7}$}.\\ 
+
+
+
+
+\begin{equation*}
+\Delta E_{5S_{1/2},F=1 \rightarrow 5P_{1/2}, F=1} = \delta\varepsilon +  \dfrac{40 A_{s}}{36} = 1.5595 eV + 9.42\cdot 10^{-7} eV = 0.527212 \cdot 10^{-3} eV
+\end{equation*}
+
+so $\Delta E_{5S_{1/2},F=1 \rightarrow 5P_{1/2}, F=1}=  = 0.527212 \cdot 10^{-3} eV$
+
+%\begin{equation}
+%\Delta E_{5S_{1/2}, F=1 \rightarrow 5P_{1/2}, F=2} =  \delta\varepsilon + \dfrac{42 A_{s}}{36} = 0.52627\cdot 10^{-3}eV + 9.89\cdot 10^{-7}eV = 0.527259 \cdot 10^{-3} eV
+%\end{equation}
+
+\begin{equation*}
+\Delta E_{ 5S_{1/2}, F=2 \rightarrow 5J_{1/2}, F=1} = \delta\varepsilon -\dfrac{32 A_{s}}{36} = 1.5595 eV + 7.54 \cdot 10^{-7} eV= 0.527024 \cdot 10^{-3} eV
+\end{equation*}
+
+thus
+
+$\Delta E_{ 5S_{1/2}, F=2 \rightarrow 5J_{1/2}, F=1} = 0.527024 \cdot 10^{-3} eV$
+
+%\begin{equation}
+%\Delta E_{5S_{1/2}, F=2 \rightarrow 5J_{1/2}, F=2} = \delta\varepsilon -\dfrac{24 A_{s}}{36} = 0.52627\cdot 10^{-3}eV + 5.63 \cdot 10^{-7} eV = 0.525704 \cdot 10^{-3} eV
+%\end{equation}
+
+
+
+
+\underline{For $^{85}Rb$ $\rightarrow$ $A_{S}= 2.3797 \cdot 10^{-7}$}.                \\
+
+\begin{equation*}
+\Delta E_{5S_{1/2},F=2 \rightarrow 5P_{1/2}, F=2} =  \delta\varepsilon + \dfrac{56 A_{s}}{36} = 1.5595 eV + 3.70175 \cdot 10^{-7} eV= 0.526640 \cdot 10^{-3} eV
+\end{equation*}
+
+
+%\begin{equation}
+%\Delta E_{5S_{1/2}, F=2 \rightarrow 5P_{1/2}, F=3}=\delta\varepsilon \dfrac{68 A_{s}}{36}= 0.52627\cdot 10^{-3}eV + 9.42\cdot 10^{-7} eV
+%\end{equation}
+
+%\begin{equation}
+%\Delta E_{ 5S_{1/2}, F=3 \rightarrow 5P_{1/2}, F=3} = \delta\varepsilon -\dfrac{40 A_{s}}{36} = 0.52627\cdot 10^{-3}eV + 9.42\cdot 10^{-7} eV
+%\end{equation}
+
+\begin{equation*}
+\Delta E_{5S_{1/2}, F=3 \rightarrow 5P_{1/2}, F=2} =\delta\varepsilon -\dfrac{52 A_{s}}{36}= 1.5595 eV + 3.43734 \cdot 10^{-7}eV = 0.526613 \cdot 10^{-3} eV
+\end{equation*} 
+
+
+
+
+
+\subsubsection{Fine structure energy levels}
+The Spin-Orbit coupling gives rise to the Fine structure levels according to the Hamiltonian $H_{SO}= \dfrac{\beta}{\hbar^{2}} \vec{L} \vec{S}$, with
+\begin{equation}
+E_{SO}= \dfrac{Z e^{2}}{8\pi \varepsilon_{0} m_{e} c^{2}} \langle J, m_{J}\vert \dfrac{1}{r^{3}} \vec{L} \vec{S} \vert J, m_{J} \rangle
+\end{equation}
+
+where for Alkali atoms we have:\\
+
+$\bullet$ for $J=l+\frac{1}{2} \rightarrow$  $\vert \vec{L} \vec{S} \vert J, m_{J} \rangle  =\dfrac{\hbar^{2}}{2}l \vert \vec{L} \vec{S} \vert J, m_{J} \rangle $
+
+$\bullet$ for $J=l-\frac{1}{2} \rightarrow$  $\vert \vec{L} \vec{S} \vert J, m_{J} \rangle  =\dfrac{\hbar^{2}}{2} -(l+1) \vert \vec{L} \vec{S} \vert J, m_{J} \rangle $
+
+which gives us \\
+
+
+$\bullet$ for $J=l+\frac{1}{2} \rightarrow$: $E_{SO}= \dfrac{Z}{4 n^{3}} \dfrac{a^{4} m_{e}c^{2}}{(l+\dfrac{1}{2})(l+1)} $
+
+
+
+
+$\bullet$ for $J=l-\frac{1}{2} \rightarrow$: $E_{SO}= \dfrac{-Z}{4 n^{3}} \dfrac{a^{4} m_{e}c^{2}}{l(l+\dfrac{1}{2})})$
+
+
+For $5S\frac{1}{2}$ and $5P\frac{1}{2}$ states we have $J=\dfrac{1}{2}$,
+thus we have two possibilities : $J= 0+ 1/2$ or $J=1- 1/2$, where the first is concerning obviously the $S$ state and the second $P$.\\
+(We can have electric dipole transitions between fine structure levels only for $\Delta l= \pm 1$).\\
+
+So we have \\
+
+
+
+$E5S _{\frac{1}{2}} =  \dfrac{ Z^{2} a^{4} m_{e} c^{2}}{250}$ and \\
+
+$E5P _{\frac{1}{2}} = E5S _{\frac{1}{2}}/4 $
+
+
+
+
+We are able to calculate the energy difference $\delta\ E $ between the two fine structure states for $5S _{\frac{1}{2}} \rightarrow 5P _{\frac{1}{2}}  $ 
+
+
+
+The energy difference  is given by $1.5595 eV$
+
+%\begin{equation}
+%\delta E _{  5S _{\frac{1}{2}} \rightarrow 5P _{\frac{1}{2}}}   =  E_{5S _{\frac{1}{2}}} - E_{5P _{\frac{1}{2}}} = \dfrac{3}{4}5S _{\frac{1}{2}} = \dfrac{3 Z^{2} a^{2} m_{e} c^{2}a^{2}}{1000} = \dfrac{ 11^{2} 10^{-3} 3 \cdot 27.2113}{137^2} = 0.5263 \cdot 10^{-3} eV
+%\end{equation}
+
+
+\section{Doppler-broadened linear absorption Spectroscopy}
+
+
+\subsection{Doppler effect}
+
+Let's assume that we have a cell containing a gas of atoms for investigation. In room temperature, we will have a Maxwell-Boltzmann velocity distribution $\overline{u}= \sqrt{\dfrac{2K_{B}T}{m}}  $.\\
+
+To conduct optical spectroscopy, we use a laser beam of frequency $\omega$, passing through the cell, and a photodiode measuring the output intensity of the laser beam  $I(\omega)$.\\
+
+The thermal motion of the atoms will affect the spectral line profile of the absorption since the absorption frequency in the atom's rest frame will be given by $\omega_{D}= \omega - \vec{k}\cdot \vec{u}$ according to the Doppler Shift, considering velocities in the direction of the laser beam only.\\
+
+Specifically if the atom moves parallel to the laser beam $(\vec{k}\cdot \vec{u} > 0)$ the absorption frequency is decreased (Red shift), on the contrary, if the atom moves opposite to the laser beam  $(\vec{k}\cdot \vec{u} < 0)$, is increased (Blue shift.\\
+
+The distribution function of the atoms vs. the laser detuning $\Delta = \omega -\omega_{0}$ will have a Gaussian shape since the Doppler shift is linear in velocity, so the FWHM of the Doppler profile is given by $\delta\omega_{FWHM}= \dfrac{2 \omega_{0} \overline{u} \sqrt{ln2}}{c}  $, where usually it is two orders of magnitude larger than the natural linewidth $\Gamma$, in the optical range transitions.\\
+
+So this is why it is very difficult to reach the resolution limit that is imposed by the excited state line width $\Gamma$, in room temperature with linear spectroscopy in the optical range.
+
+
+
+
+
+
+\section*{Purpose of experiment}
+
+
+$\bullet $ Set up a linear spectroscopy experiment to study the $D_{1}$ transition ($5 S_{\frac{1}{2}} \rightarrow lowest lying 5 P_{\frac{1}{2}}$  ) of the isotopes $^{85}Rb$ and $^{87}Rb$, of the natural Rubidium:\\ 
+
+$\bullet$ By recording simultaneously the absorption spectrum and the transmission spectrum of the FPI, identify the lines in the spectrum and determine the Hyperfine coupling constant of the ground state of both isotopes.\\ 
+
+$\bullet$ Calculate the spectral resolution $\dfrac{\Delta \nu}{\nu}$ of this linear spectroscopy.\\
+
+
+$\bullet $ Measure the Doppler width of the transition and the Hyperfine coupling constants.\\
+
+
+
+\section*{ Experimental set up}
+
+
+In evacuated Pyrex cells of length 20 and 50 mm, containing a droplet of the metal, the Rb atoms are present as saturated vapor.\\\\
+
+
+picture ,kjhgfzdtrsfdgfhgjhkj
+
+
+
+
+\section*{Procedure and Analysis}
+
+
+Since we are observing $D1$, we have only two possible transitions for each isotope, thus 4 lines in total in our spectrum to be observed.\\
+
+\textbf{Spectrum picture!!!!}
+
+
+Comparing our spectrum to the given one in the script, we located our transitions in the frequencies \\
+\\ and \\
+and
+, where we have already calculated the energy for each of the possible dipole transition between the Hyperfine states, for each isotope, so we see that we have matches for 
+
+.\\
+.
+.\\
+
+.
+
+.\\
+
+.
+Thus we can now proceed to the calculation of the Hyperfine constant $A_{S}$ of each isotope ground state.\\
+  We have ...............
+  $\pm$
+
+
+
+\chapter{Nonlinear Spectroscopy  of  the D1 transition of Rb}
+ 
+
+ 
+ 
+\section{Saturated absorption spectroscopy}
+
+To overcome the limiting effect of the atomic motion that causes the Doppler broadening of the spectral lines, we can employ saturation effects, by performing Doppler-free spectroscopy.\\
+One simple way is selecting to resolve spectroscopically one specific class of atomic velocities in a vapor cell i.e saturation spectroscopy.\\
+
+More specifically, we consider the effect of the laser $(\omega)$ separately on the populations of the ground and excited states.
+The saturation intensity of a two-level system is defined as the intensity required to achieve a population of the excited state of $25$ percent, given by 
+
+$ I_{sat}= \dfrac{\hbar \omega_{0} \Gamma}{2 \sigma_{\omega}}$, where for resonance we have 
+$I_{sat}(\omega_{0})= \dfrac{\pi hc\Gamma}{3\lambda^{3}}$.\\
+
+
+We suppose that all the atoms in the cell, initially, are in the ground state. A laser beam passes through the vapor and interacts with the atoms moving at frequency $\omega= \omega_{D}$. Thus at velocity $u=\dfrac{\omega_{0}-\omega}{\vert \vec{k}\vert}$ the laser transfers population from the ground state to the excited state, so the population density of the atoms in the ground state $N_{g}$ decreases and $N_{e}$ increases, resulting to the so-called spectral hole burning.\\
+
+
+The spectral width of the hole depends on the intensity of the exciting laser (power broadening) and is given by  
+
+\begin{equation}
+\delta \omega _{hole }= \Gamma \sqrt{1+ \dfrac{I}{I_{sat}}}
+\end{equation}
+
+The absorption line profile has a Lorentzian shape, however the width is dependent on the intensity of the light and this effect is called power broadening of the spectral lines, where for high intensities the spectral resolution is degraded.\\
+
+
+
+In order to detect the spectral hole from the strong laser beam (pump beam), we need to superimpose a second laser beam (probe beam) of the same frequency $\omega$ in the opposite direction and much weaker intensity (to neglect its effects on the population.\\
+
+Since pump and probe beam have the same frequency but opposite direction, they couple to atoms with opposite velocities (different atoms, so the beams don't affect one the other).
+The recording of the transmission of the probe beam through the vapor will detect the Doppler broadened spectrum, but when the laser frequency is very near to the atomic resonance's $\omega= \omega_{0}$, the probe laser then will probe atoms at $u=0$ that are simultaneously interacting with the pump beam.\\
+The absorption of the probe laser will be smaller at this frequency since the pump beam burns the hole in the distribution of the atoms in the ground state, thus the probe will measure this diminution of $N_{g}$. Therefore, the result of the probe transmission will be a Doppler-broadened profile with a saturated absorption dip, the so-called Lamb dip, at $\omega=\omega_{0}$.
+
+\section*{Purpose of experiment}
+$\bullet$ Use a nonlinear technique allowing to observe spectral lines without Doppler broadening.\\
+
+$\cdot$ More accurate determination of the parameters determined with the linear technique $\Rightarrow$\\
+
+pump-probe configuration to measure the saturated absorption spectrum of Rb.
+
+$\cdot$ Identification of the sub-Doppler resonance lines and the cross-over lines in the spectrum.\\
+
+$\cdot$ Measurement of the hyperfine splittings in the ground and excited states of both isotopes and
+determination the corresponding hyperfine coupling constants.
+
+$\cdot$ Calculation of the resolution $\Delta \nu / \nu$ that can be achieved with this non-linear spectroscopic technique.
+
+$\cdot$ Identification of $5S1/2(F = 2) → 5P1/2(F′ = 1)$ hyperfine component of $^{87}Rb$.
+
+$\cdot$ Measurement of the amplitude $A$ and the width $\Delta\nu$ of the Lamb dip of this line as a function of pump laser
+power.
+
+$\cdot$ Plots $A vs P_{pump}$ and $(\Delta\nu).... vs P_{pump}$ to determine the saturation power $P_{sat}$ and estimate the beam diameter and determine the saturation intensity $I_{sat}$.
+
+
+
+
+
+
+
+\section*{ Experimental set up}
+\section*{Procedure and Analysis}
+
+
+
+
+\chapter{ Equipment }
+$\bullet $  Diode laser system: extended-cavity laser with feedback from an external grating (1800 lines/mm) mounted in Littrow confguration.\\
+The laser diode operates nominally at $ \lambda = 794nm $ and delivers an output power of about $3mW$\\
+$ \bullet $ Control Unit of the diode laser: Monitor Unit and Power Supply\\ 
+$ \bullet $  Scan Control: Laser frequency scanned by tilting the grating with a piezo-electric ceramic.\\ 
+$ \bullet $   mirrors\\
+$ \bullet $   glass wedge\\
+$ \bullet $   lenses \\
+$ \bullet $   power meter\\
+$ \bullet $   one calibrated photodiode giving a direct reading of the power in $\mu W$ and two uncalibrated photodiodes\\
+$ \bullet $   optical attenuators\\ 
+$ \bullet $   confocal Fabry-Perot interferometer (mirror separation of $50 cm$, mirror reflectivities of $ 85$ percent\\
+$ \bullet $   two-channel digital storage oscilloscope \\
+$ \bullet $   two vapor cells (length $2 cm$ and $5 cm$) with a natural mixture of both rubidium isotopes\\
+$ \bullet $   one infrared-sensitive viewing card\\ 
+$ \bullet $   one infrared-sensitive camera with monitor\\
+
+
+
+
+
+
+\chapter{Conclusions}
+
+
+
+
+
+Laser spectroscopy allows us to observe a series of phenomena that would normally not be possible to observe and study by performing a series of different techniques. One of such techniques is linear spectroscopy which is important to observe particular phenomena from the interaction of light with matter. However, when performing nonlinear spectroscopy, the accuracy increases and properties otherwise hidden, appear visible and feasible. That is the case for hyperfine splitting, in particular for alkali metals, like Rubidium. For linear spectroscopy the normally hidden hyperfine structure can be studied and determined with accuracy using nonlinear spectroscopy.
+The results presented in this work, although have minor discrepancies with some theoretical predictions and can be improved for sure, are a good starting point to become familiarized with the techniques before mentioned.
+Some of the most problematic aspects of linear and nonlinear spectroscopy are related to the accuracy and precision of the alignment of the optical components that are necessary to conduct the experiment. Otherwise, the experiment works completely fine once the proper measures are taken into account. Another troublesome aspect is the quality of the laser used. As discussed before, the laser used in this experiment is old and fluctuates in a way that some measurements are affected but that can be resolved with enough time.
+6. References.
+
+
+
+\end{document}
+
